@@ -57,9 +57,10 @@ st.markdown("""
     .login-title {
         text-align: center;
         color: #1a3a5c;
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 8px;
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: 10px;
+        margin-bottom: 6px;
     }
     .login-sub {
         text-align: center;
@@ -124,49 +125,39 @@ def check_password(username, password):
 def login_page():
     st.markdown("""
     <div class="login-box">
-        <div class="login-title">🦴 CPAK System</div>
+        <div class="login-title">
+            A · N · E · E · S
+        </div>
+        <div style='text-align:center;
+                    color:#1a3a5c;
+                    font-size:13px;
+                    font-weight:500;
+                    margin-bottom:4px'>
+            Artificial Neural Engine for
+            Enhanced Scanogram Analysis
+        </div>
+        <div style='text-align:center;
+                    color:#666;
+                    font-size:12px;
+                    margin-bottom:4px'>
+            (Coronal Plane Alignment of the
+            Knee — CPAK)
+        </div>
         <div class="login-sub">
-            Hospital Universiti Kebangsaan Malaysia<br>
-            Restricted Access — Authorised Personnel Only
+            Hospital Universiti Kebangsaan Malaysia
+            <br>
+            Restricted Access —
+            Authorised Personnel Only
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Centre the login form
     _, col, _ = st.columns([1, 1.2, 1])
     with col:
         st.markdown(
             "<h3 style='text-align:center;"
             "color:#1a3a5c;margin-bottom:20px'>"
             "🔒 Sign In</h3>",
-            unsafe_allow_html=True)
-
-        username = st.text_input(
-            "Username",
-            placeholder="Enter username",
-            key="login_user")
-        password = st.text_input(
-            "Password",
-            type="password",
-            placeholder="Enter password",
-            key="login_pass")
-
-        if st.button("Sign In", type="primary"):
-            if check_password(username, password):
-                st.session_state['authenticated'] = True
-                st.session_state['username']      = username
-                st.rerun()
-            else:
-                st.error("❌ Invalid username "
-                          "or password.")
-
-        st.markdown(
-            "<p style='text-align:center;"
-            "color:#999;font-size:12px;"
-            "margin-top:16px'>"
-            "⚠️ This system contains sensitive "
-            "patient data. Unauthorised access "
-            "is prohibited.</p>",
             unsafe_allow_html=True)
 
 # ── Check authentication ───────────────────────────────────────────────────────
