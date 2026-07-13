@@ -1,5 +1,6 @@
 import asyncio
 import sys
+import hashlib
 
 if sys.platform == "win32":
     asyncio.set_event_loop_policy(
@@ -11,11 +12,10 @@ import cv2
 import tensorflow as tf
 from tensorflow import keras
 from pathlib import Path
-import hashlib
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="CPAK Knee Alignment System",
+    page_title="ANEES — CPAK System",
     page_icon="🦴",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -34,11 +34,17 @@ st.markdown("""
         text-align: center;
     }
     .header-box h1 {
-        color: white; font-size: 22px;
-        margin: 0 0 8px 0; font-weight: 700;
+        color: white; font-size: 28px;
+        margin: 0 0 4px 0; font-weight: 900;
+        letter-spacing: 12px;
+    }
+    .header-box h2 {
+        color: #cce4ff; font-size: 15px;
+        margin: 0 0 4px 0; font-weight: 400;
+        letter-spacing: 1px;
     }
     .header-box p {
-        color: #cce4ff; font-size: 13px; margin: 0;
+        color: #a8c8f0; font-size: 12px; margin: 0;
     }
     .login-box {
         max-width: 420px;
@@ -51,14 +57,15 @@ st.markdown("""
     .login-title {
         text-align: center;
         color: #1a3a5c;
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 8px;
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: 10px;
+        margin-bottom: 6px;
     }
     .login-sub {
         text-align: center;
         color: #666;
-        font-size: 13px;
+        font-size: 12px;
         margin-bottom: 24px;
     }
     .disclaimer {
@@ -97,13 +104,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Authentication ─────────────────────────────────────────────────────────────
-# Authorised users — add more as needed
-# Password is stored as SHA-256 hash for security
-# To generate hash: hashlib.sha256("password".encode()).hexdigest()
-
 USERS = {
-    "drarshad210": hashlib.sha256(
-        "batwing210A".encode()).hexdigest(),
+    "dr.arshad": hashlib.sha256(
+        "hukm2026".encode()).hexdigest(),
     "eva.ray": hashlib.sha256(
         "ukm2026".encode()).hexdigest(),
     "admin": hashlib.sha256(
@@ -118,15 +121,33 @@ def check_password(username, password):
 def login_page():
     st.markdown("""
     <div class="login-box">
-        <div class="login-title">🦴 CPAK System</div>
+        <div class="login-title">
+            A · N · E · E · S
+        </div>
+        <div style='text-align:center;
+                    color:#1a3a5c;
+                    font-size:13px;
+                    font-weight:500;
+                    margin-bottom:4px'>
+            Artificial Neural Engine for
+            Enhanced Scanogram Analysis
+        </div>
+        <div style='text-align:center;
+                    color:#666;
+                    font-size:12px;
+                    margin-bottom:8px'>
+            (Coronal Plane Alignment of the
+            Knee — CPAK)
+        </div>
         <div class="login-sub">
-            Hospital Universiti Kebangsaan Malaysia<br>
-            Restricted Access — Authorised Personnel Only
+            Hospital Universiti Kebangsaan Malaysia
+            <br>
+            Restricted Access —
+            Authorised Personnel Only
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Centre the login form
     _, col, _ = st.columns([1, 1.2, 1])
     with col:
         st.markdown(
@@ -354,7 +375,6 @@ def draw_annotated(img_bgr,fh,knee,ankle,
     return cv2.cvtColor(vis,cv2.COLOR_BGR2RGB)
 
 # ── Header with logout ─────────────────────────────────────────────────────────
-# Anchor for scroll-to-top
 st.markdown('<div id="top"></div>',
              unsafe_allow_html=True)
 
@@ -362,13 +382,11 @@ header_col, logout_col = st.columns([5,1])
 with header_col:
     st.markdown("""
     <div class="header-box">
-        <h1>🦴 Coronal Plane Alignment of the
-        Knee (CPAK) Classification System</h1>
-        <p>AI-Assisted Tool for Knee Osteoarthritis
-        &nbsp;|&nbsp;
-        Faculty of Information Science and
-        Technology, UKM &nbsp;|&nbsp;
-        HUKM Prototype</p>
+        <h1>A · N · E · E · S</h1>
+        <h2>Artificial Neural Engine for Enhanced
+        Scanogram Analysis</h2>
+        <p>(Coronal Plane Alignment of the Knee
+        — CPAK)</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -457,15 +475,7 @@ with col_right:
 
     if uploaded and analyze:
 
-        # Scroll to top when analyse is clicked
-        st.markdown("""
-        <script>
-            window.scrollTo({top: 0,
-                             behavior: 'smooth'});
-        </script>
-        """, unsafe_allow_html=True)
-
-        # Also use JS anchor scroll as backup
+        # Scroll to top
         st.markdown("""
         <script>
         document.getElementById('top')
