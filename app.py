@@ -102,10 +102,10 @@ st.markdown("""
 # To generate hash: hashlib.sha256("password".encode()).hexdigest()
 
 USERS = {
-    "dr.arshad": hashlib.sha256(
-        "hukm2026".encode()).hexdigest(),
-    "eva.ray": hashlib.sha256(
-        "ukm2026".encode()).hexdigest(),
+    "drarshad210": hashlib.sha256(
+        "batwing210A".encode()).hexdigest(),
+    "evarayiew": hashlib.sha256(
+        "55c2b1cce1E&".encode()).hexdigest(),
     "admin": hashlib.sha256(
         "cpakadmin".encode()).hexdigest(),
 }
