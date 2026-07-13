@@ -15,7 +15,7 @@ import hashlib
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="CPAK Knee Alignment System",
+    page_title="ANEES — CPAK System",
     page_icon="🦴",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -34,11 +34,17 @@ st.markdown("""
         text-align: center;
     }
     .header-box h1 {
-        color: white; font-size: 22px;
-        margin: 0 0 8px 0; font-weight: 700;
+        color: white; font-size: 28px;
+        margin: 0 0 4px 0; font-weight: 900;
+        letter-spacing: 12px;
+    }
+    .header-box h2 {
+        color: #cce4ff; font-size: 15px;
+        margin: 0 0 4px 0; font-weight: 400;
+        letter-spacing: 1px;
     }
     .header-box p {
-        color: #cce4ff; font-size: 13px; margin: 0;
+        color: #a8c8f0; font-size: 12px; margin: 0;
     }
     .login-box {
         max-width: 420px;
@@ -362,13 +368,11 @@ header_col, logout_col = st.columns([5,1])
 with header_col:
     st.markdown("""
     <div class="header-box">
-        <h1>🦴 Coronal Plane Alignment of the
-        Knee (CPAK) Classification System</h1>
-        <p>AI-Assisted Tool for Knee Osteoarthritis
-        &nbsp;|&nbsp;
-        Faculty of Information Science and
-        Technology, UKM &nbsp;|&nbsp;
-        HUKM Prototype</p>
+        <h1>A · N · E · E · S</h1>
+        <h2>Artificial Neural Engine for Enhanced
+        Scanogram Analysis</h2>
+        <p>(Coronal Plane Alignment of the Knee —
+        CPAK)</p>
     </div>
     """, unsafe_allow_html=True)
 
